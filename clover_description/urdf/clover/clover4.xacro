@@ -3,7 +3,7 @@
 
   <xacro:arg name="main_camera" default="true"/>
   <xacro:arg name="rangefinder" default="true"/>
-  <xacro:arg name="led" default="true"/>
+  <xacro:arg name="led" default="false"/>
   <xacro:arg name="gps" default="true"/>
   <xacro:arg name="maintain_camera_rate" default="false"/>
   <xacro:arg name="use_clover_physics" default="false"/>
@@ -20,7 +20,16 @@
 
   <!-- Create rangefinder plugin -->
   <xacro:if value="$(arg rangefinder)">
-    <xacro:distance_sensor parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0"/>
+    <xacro:distance_sensor index="0" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="1" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="2" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="3" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="4" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="5" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="6" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="7" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="8" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="9" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
   </xacro:if>
 
   <!-- Instantiate LED strip -->

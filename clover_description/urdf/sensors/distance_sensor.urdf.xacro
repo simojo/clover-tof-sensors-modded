@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot name="rpi_camera" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="" default="true"/>
+  <xacro:arg name="" default="true"/>
+
   <xacro:include filename="../camera_sensor.urdf.xacro"/>
 
-  <xacro:macro name="distance_sensor" params="name:=lidar_vl53l1x parent x:=0 y:=0 z:=0 roll:=0 pitch:=0 yaw:=0 range_min:=0.01 range_max:=4.0 resolution:=0.01 rate:=10 fov:=0.471239">
+  <xacro:macro name="distance_sensor" params="name:=lidar_VL53L4CX index parent x:=0 y:=0 z:=0 roll:=0 pitch:=0 yaw:=0 range_min range_max resolution:=0.01 rate:=10 fov:=0.3141593">
     <joint name="${name}_joint" type="fixed">
       <origin xyz="${x} ${y} ${z}"
               rpy="${roll} ${pitch} ${yaw}"/>
@@ -55,8 +59,8 @@
         </ray>
         <plugin name="laser" filename="libgazebo_ros_range.so">
           <robotNamespace></robotNamespace> <!-- FIXME: fill namespace? -->
-          <topicName>/rangefinder/range</topicName>
-          <frameName>rangefinder</frameName>
+          <topicName>/rangefinder_${index}/range</topicName> <!-- put index here to uniquely identify topics -->
+          <frameName>rangefinder_${index}</frameName>
           <radiation>infrared</radiation>
           <fov>${fov}</fov>
           <gaussianNoise>0.001</gaussianNoise>

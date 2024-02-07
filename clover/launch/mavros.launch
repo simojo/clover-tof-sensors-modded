@@ -5,6 +5,7 @@
     <arg name="gcs_bridge" default="tcp"/>
     <arg name="viz" default="true"/>
     <arg name="respawn" default="true"/>
+    <!-- FIXME: here -->
     <arg name="distance_sensor_remap" default="rangefinder/range"/>
     <arg name="usb_device" default="/dev/px4fmu"/>
     <arg name="prefix" default="" unless="$(eval fcu_conn == 'usb')"/>
@@ -41,6 +42,7 @@
         <!-- basic params -->
         <rosparam command="load" file="$(find clover)/launch/mavros_config.yaml"/>
 
+        <!-- FIXME: here -->
         <!-- remap rangefinder -->
         <remap from="mavros/distance_sensor/rangefinder_sub" to="$(arg distance_sensor_remap)" if="$(eval bool(distance_sensor_remap))"/>
 
@@ -69,6 +71,7 @@
         </rosparam>
     </node>
 
+    <!-- FIXME: here -->
     <!-- remapped distance_sensor config -->
     <rosparam param="$(arg distance_sensor_remap)" if="$(eval bool(distance_sensor_remap))">
         subscriber: true

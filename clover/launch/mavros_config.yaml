@@ -70,6 +70,7 @@ setpoint_velocity:
 mission:
   pull_after_gcs: true  # update mission if gcs updates
 
+# FIXME: here
 distance_sensor:
   rangefinder:
       id: 0

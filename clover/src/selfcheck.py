@@ -34,6 +34,8 @@ from aruco_pose.msg import MarkerArray
 from mavros import mavlink
 import locale
 
+# set custom number of rangefinders being used
+number_of_rangefinders = 10
 
 rospy.init_node('selfcheck')
 
@@ -697,16 +699,19 @@ def check_rangefinder():
     # TODO: check FPS!
     rng = False
     try:
+        # FIXME: do I need to address this?
         rospy.wait_for_message('rangefinder/range', Range, timeout=4)
         rng = True
     except rospy.ROSException:
         failure('no rangefinder data from Raspberry')
 
-    try:
-        rospy.wait_for_message('mavros/distance_sensor/rangefinder', Range, timeout=4)
-        rng = True
-    except rospy.ROSException:
-        failure('no rangefinder data from PX4')
+    # loop through all rangefinders
+    for i in range(number_of_rangefinders):
+        try:
+            rospy.wait_for_message(f"mavros/distance_sensor_{i}/rangefinder", Range, timeout=4)
+            rng = True
+        except rospy.ROSException:
+            failure('no rangefinder data from PX4')
 
     if not rng:
         return
