@@ -20,16 +20,24 @@
 
   <!-- Create rangefinder plugin -->
   <xacro:if value="$(arg rangefinder)">
-    <xacro:distance_sensor index="0" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
-    <xacro:distance_sensor index="1" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
-    <xacro:distance_sensor index="2" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
-    <xacro:distance_sensor index="3" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
-    <xacro:distance_sensor index="4" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
-    <xacro:distance_sensor index="5" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
-    <xacro:distance_sensor index="6" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
-    <xacro:distance_sensor index="7" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
-    <xacro:distance_sensor index="8" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
-    <xacro:distance_sensor index="9" parent="base_link" x="0.0" y="0.0" z="-0.04" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/>
+    <!--
+      Radius of tof_sensor_array_drum is 20cm from the center of it.
+      I increment through values of 2pi/8 (8-sided) for the x y positioning of each sensor.
+      Phi is the angular offset, because the faces of the octagon are offset at a 22.5deg angle.
+    -->
+    <xacro:property name="rangefinder_" value="0.2" />
+    <xacro:property name="d_theta" value="${2 * pi / 8}" />
+    <xacro:property name="phi" value="${22.5 * pi / 180}" />
+    <xacro:distance_sensor index="0" parent="tof_sensor_array_link" x="${r*cos((d_theta * 0) + phi)}" y="${r*sin((d_theta * 0) + phi)}" z="-0.04" roll="0" pitch="${pi / 2}" yaw="(d_theta * 0) + phi" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="1" parent="tof_sensor_array_link" x="${r*cos((d_theta * 1) + phi)}" y="${r*sin((d_theta * 1) + phi)}" z="-0.04" roll="0" pitch="${pi / 2}" yaw="(d_theta * 1)" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="2" parent="tof_sensor_array_link" x="${r*cos((d_theta * 2) + phi)}" y="${r*sin((d_theta * 2) + phi)}" z="-0.04" roll="0" pitch="${pi / 2}" yaw="(d_theta * 2)" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="3" parent="tof_sensor_array_link" x="${r*cos((d_theta * 3) + phi)}" y="${r*sin((d_theta * 3) + phi)}" z="-0.04" roll="0" pitch="${pi / 2}" yaw="(d_theta * 3)" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="4" parent="tof_sensor_array_link" x="${r*cos((d_theta * 4) + phi)}" y="${r*sin((d_theta * 4) + phi)}" z="-0.04" roll="0" pitch="${pi / 2}" yaw="(d_theta * 4)" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="5" parent="tof_sensor_array_link" x="${r*cos((d_theta * 5) + phi)}" y="${r*sin((d_theta * 5) + phi)}" z="-0.04" roll="0" pitch="${pi / 2}" yaw="(d_theta * 5)" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="6" parent="tof_sensor_array_link" x="${r*cos((d_theta * 6) + phi)}" y="${r*sin((d_theta * 6) + phi)}" z="-0.04" roll="0" pitch="${pi / 2}" yaw="(d_theta * 6)" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="7" parent="tof_sensor_array_link" x="${r*cos((d_theta * 7) + phi)}" y="${r*sin((d_theta * 7) + phi)}" z="-0.04" roll="0" pitch="${pi / 2}" yaw="(d_theta * 7)" range_min="0.001" range_max="6.0"/>
+    <xacro:distance_sensor index="8" parent="base_link" x="0" y="0" z="0.005" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/> <!-- up-facing sensor-->
+    <xacro:distance_sensor index="9" parent="tof_sensor_array_link" x="0" y="0" z="-0.05" roll="0" pitch="${pi / 2}" yaw="0" range_min="0.001" range_max="6.0"/> <!-- down-facing sensor -->
   </xacro:if>
 
   <!-- Instantiate LED strip -->
