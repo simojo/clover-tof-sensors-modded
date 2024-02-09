@@ -7,14 +7,14 @@
   <xacro:include filename="../camera_sensor.urdf.xacro"/>
 
   <xacro:macro name="distance_sensor" params="name:=lidar_VL53L4CX index parent x:=0 y:=0 z:=0 roll:=0 pitch:=0 yaw:=0 range_min range_max resolution:=0.01 rate:=10 fov:=0.3141593">
-    <joint name="${name}_joint" type="fixed">
+    <joint name="${name}_${index}_joint" type="fixed">
       <origin xyz="${x} ${y} ${z}"
               rpy="${roll} ${pitch} ${yaw}"/>
       <parent link="${parent}"/>
-      <child link="${name}_link"/>
+      <child link="${name}_${index}_link"/>
     </joint>
 
-    <link name="${name}_link">
+    <link name="${name}_${index}_link">
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
@@ -34,13 +34,13 @@
       </inertial>
     </link>
 
-    <gazebo reference="${name}_joint">
+    <gazebo reference="${name}_${index}_joint">
       <disableFixedJointLumping>true</disableFixedJointLumping>
       <preserveFixedJoint>true</preserveFixedJoint>
     </gazebo>
 
-    <gazebo reference="${name}_link">
-      <sensor type="ray" name="${name}">
+    <gazebo reference="${name}_${index}_link">
+      <sensor type="ray" name="${name}_${index}">
         <pose>0 0 0 0 0 0</pose>
         <ray>
           <scan>

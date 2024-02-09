@@ -142,7 +142,7 @@
         <!-- We also give it some inertia, so that the physics engine does not go crazy
              (and to avoid it being devoured by Gazebo)
         -->
-        <inertia 
+        <inertia
           ixx="8.57890084602841e-5"
           ixy="2.1174200194485434e-7"
           ixz="4.585058826675158e-10"
