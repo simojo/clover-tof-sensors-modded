@@ -133,7 +133,6 @@
     </joint>
 
     <!-- FIXME: how to set origin correctly? -->
-    <!-- FIXME: how to import assembly as a whole? -->
     <!-- FIXME: how to add rangefinder sensors? -->
     <link name="tof_sensor_array_link">
       <inertial>
@@ -143,19 +142,23 @@
         <!-- We also give it some inertia, so that the physics engine does not go crazy
              (and to avoid it being devoured by Gazebo)
         -->
-        <!-- FIXME: calculate this -->
         <inertia 
-          ixx="${1/12 * 0.015 * 0.01 * 0.01}"
-          iyy="${1/12 * 0.015 * 0.01 * 0.01}"
-          izz="${1/12 * 0.015 * 0.01 * 0.01}"
-          ixy="0.0" ixz="0.0" iyz="0.0"
+          ixx="8.57890084602841e-5"
+          ixy="2.1174200194485434e-7"
+          ixz="4.585058826675158e-10"
+          iyx="2.1174200194485434e-7"
+          iyy="8.53655353895177e-5"
+          iyz="1.9573118871400868e-10"
+          izx="4.585058826675158e-10"
+          izy="1.9573118871400868e-10"
+          izz="0.0001459305357956103"
         />
       </inertial>
       <!-- We may want to have proper collision tucked away here at some point, though -->
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <box size="0.102 0.102 0.031" /> <!-- [m] [m] [m] -->
+          <box size=".101567337 .101567337 .030500050" /> <!-- [m] [m] [m] -->
         </geometry>
       </collision>
       <visual>
