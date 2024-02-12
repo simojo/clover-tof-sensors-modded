@@ -25,7 +25,7 @@
       I increment through values of 2pi/8 (8-sided) for the x y positioning of each sensor.
       Phi is the angular offset, because the faces of the octagon are offset at a 22.5deg angle.
     -->
-    <xacro:property name="r" value="0.2" />
+    <xacro:property name="r" value="0.05" />
     <xacro:property name="d_theta" value="${2.0 * pi / 8.0}" />
     <xacro:property name="phi" value="${22.5 * pi / 180.0}" />
     <xacro:distance_sensor index="0" parent="tof_sensor_array_link" x="${r*cos((d_theta * 0) + phi)}" y="${r*sin((d_theta * 0) + phi)}" z="-0.04" roll="0" pitch="${0}" yaw="${d_theta * 0 + phi}" range_min="0.001" range_max="6.0"/>
