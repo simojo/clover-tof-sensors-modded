@@ -707,11 +707,13 @@ def check_rangefinder():
         except rospy.ROSException:
             failure('no rangefinder data from Raspberry')
 
-    try:
-        rospy.wait_for_message(f"mavros/distance_sensor/rangefinder", Range, timeout=4)
-        rng = True
-    except rospy.ROSException:
-        failure('no rangefinder data from PX4')
+    # NOTE: commenting out unless needed. For my purposes, we don't need to
+    # tell the flight controller about range data.
+    # try:
+    #     rospy.wait_for_message(f"mavros/distance_sensor/rangefinder", Range, timeout=4)
+    #     rng = True
+    # except rospy.ROSException:
+    #     failure('no rangefinder data from PX4')
 
     if not rng:
         return

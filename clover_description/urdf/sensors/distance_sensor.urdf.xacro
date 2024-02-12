@@ -16,7 +16,7 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.001 0.005 0.005"/>
+          <box size="0.0015 0.0175 0.025"/> <!-- dimension of Adafruit VL53L4CX -->
         </geometry>
       </visual>
       <collision>
