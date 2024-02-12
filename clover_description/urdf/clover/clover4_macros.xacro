@@ -177,7 +177,7 @@
     </gazebo>
 
     <gazebo reference="tof_sensor_array_link">
-      <material>Gazebo/FlatBlack</material>
+      <material>flatblack</material> <!-- custom material. can be found in clover_description/media/materials/scripts/flatblack.material -->
     </gazebo>
 
     <!-- attach multirotor_base_plugin to the base_link -->

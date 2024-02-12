@@ -3,14 +3,14 @@
     <arg name="mav_id" default="0"/>
     <arg name="est" default="ekf2"/> <!-- PX4 estimator: lpe, ekf2 -->
     <arg name="vehicle" default="clover"/> <!-- PX4 vehicle configuration: clover, clover_vpe -->
-    <arg name="main_camera" default="false"/> <!-- Simulated vision position estimation camera (optical flow, ArUco) -->
+    <arg name="main_camera" default="false"/> <!-- Simulated vision position estimation camera (optical flow, ArUco) --> <!-- FIXME: will the mission computer work if this is enabled? -->
     <arg name="maintain_camera_rate" default="false"/> <!-- Slow simulation down to maintain camera rate -->
     <arg name="rangefinder" default="true"/> <!-- Simulated downward-facing rangefinder, vl53l1x-like -->
     <arg name="led" default="false"/> <!-- Simulated LED strip, ws281x-like -->
     <arg name="gps" default="false"/> <!--Simulated GPS module -->
     <arg name="use_clover_physics" default="false"/> <!-- Use inertial parameters from CAD models -->
     <arg name="gui" default="true"/> <!-- Run Gazebo with GUI -->
-    <arg name="px4_sim_speed_factor" default="0"/> <!-- simulation speed -->
+    <arg name="px4_sim_speed_factor" default="4"/> <!-- simulation speed -->
 
     <!-- Gazebo instance -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(eval type == 'gazebo')">
