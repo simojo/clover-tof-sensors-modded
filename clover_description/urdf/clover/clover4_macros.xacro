@@ -137,7 +137,7 @@
     <link name="tof_sensor_array_link">
       <inertial>
         <mass value="0.092"/> <!-- [kg] -->
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 ${-1 * 0.01525 / 2}" rpy="0 0 0"/>
         <inertia
           ixx="8.57890084602841e-5"
           ixy="2.1174200194485434e-7"
@@ -160,7 +160,7 @@
         <origin xyz="0 0 0.025" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://clover_description/meshes/clover4/tof_sensor_drum.dae"
-            scale="0.001 0.001 0.001"/> <!-- scale down because model is represented in mm -->
+            scale="0.01 0.01 0.01"/> <!-- scale down because model is represented in mm -->
         </geometry>
       </visual>
     </link>
