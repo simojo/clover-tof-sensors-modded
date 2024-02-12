@@ -5,8 +5,12 @@
     <arg name="gcs_bridge" default="tcp"/>
     <arg name="viz" default="true"/>
     <arg name="respawn" default="true"/>
-    <!-- FIXME: here -->
-    <arg name="distance_sensor_remap" default="rangefinder/range"/>
+    <!--
+        NOTE: omitting this because I don't need to tell the FCU
+        about ranging data for my purposes.
+        - simojo
+    -->
+    <!-- <arg name="distance_sensor_remap" default="rangefinder/range"/> -->
     <arg name="usb_device" default="/dev/px4fmu"/>
     <arg name="prefix" default="" unless="$(eval fcu_conn == 'usb')"/>
     <arg name="prefix" default="rosrun clover waitfile $(arg usb_device)" if="$(eval fcu_conn == 'usb')"/>
@@ -42,9 +46,13 @@
         <!-- basic params -->
         <rosparam command="load" file="$(find clover)/launch/mavros_config.yaml"/>
 
-        <!-- FIXME: here -->
+        <!--
+            NOTE: omitting this because I don't need to tell the FCU
+            about ranging data for my purposes.
+            - simojo
+        -->
         <!-- remap rangefinder -->
-        <remap from="mavros/distance_sensor/rangefinder_sub" to="$(arg distance_sensor_remap)" if="$(eval bool(distance_sensor_remap))"/>
+        <!-- <remap from="mavros/distance_sensor/rangefinder_sub" to="$(arg distance_sensor_remap)" if="$(eval bool(distance_sensor_remap))"/> -->
 
         <rosparam param="plugin_whitelist">
             - altitude
@@ -71,14 +79,20 @@
         </rosparam>
     </node>
 
-    <!-- FIXME: here -->
+    <!--
+        NOTE: omitting this because I don't need to tell the FCU
+        about ranging data for my purposes.
+        - simojo
+    -->
     <!-- remapped distance_sensor config -->
+    <!--
     <rosparam param="$(arg distance_sensor_remap)" if="$(eval bool(distance_sensor_remap))">
         subscriber: true
         id: 1
         orientation: PITCH_270
         covariance: 1  # cm
     </rosparam>
+    -->
 
     <!-- Copter visualization -->
     <node name="visualization" pkg="mavros_extras" type="visualization" if="$(arg viz)">

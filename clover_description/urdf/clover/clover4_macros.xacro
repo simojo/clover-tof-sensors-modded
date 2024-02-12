@@ -136,12 +136,8 @@
     <!-- FIXME: how to add rangefinder sensors? -->
     <link name="tof_sensor_array_link">
       <inertial>
-        <!-- We give an oh-so-tiny mass to the link to avoid it being destroyed by Gazebo -->
         <mass value="0.092"/> <!-- [kg] -->
         <origin xyz="0 0 0" rpy="0 0 0"/>
-        <!-- We also give it some inertia, so that the physics engine does not go crazy
-             (and to avoid it being devoured by Gazebo)
-        -->
         <inertia
           ixx="8.57890084602841e-5"
           ixy="2.1174200194485434e-7"
@@ -154,7 +150,6 @@
           izz="0.0001459305357956103"
         />
       </inertial>
-      <!-- We may want to have proper collision tucked away here at some point, though -->
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -162,13 +157,11 @@
         </geometry>
       </collision>
       <visual>
-        <!-- This origin should be the same as in "base_link_inertia" visuals -->
         <origin xyz="0 0 0.025" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://clover_description/meshes/clover4/tof_sensor_drum.dae"
             scale="0.001 0.001 0.001"/> <!-- scale down because model is represented in mm -->
         </geometry>
-        <!-- Let me reiterate that you can't put the "material" tag to any effect -->
       </visual>
     </link>
 
@@ -177,6 +170,15 @@
       <parent link="base_link" />
       <child link="tof_sensor_array_link" />
     </joint>
+
+    <gazebo reference="tof_sensor_array_joint">
+      <disableFixedJointLumping>true</disableFixedJointLumping>
+      <preserveFixedJoint>true</preserveFixedJoint>
+    </gazebo>
+
+    <gazebo reference="tof_sensor_array_link">
+      <material>Gazebo/FlatBlack</material>
+    </gazebo>
 
     <!-- attach multirotor_base_plugin to the base_link -->
     <gazebo>

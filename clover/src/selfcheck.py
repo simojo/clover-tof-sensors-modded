@@ -698,20 +698,20 @@ def check_optical_flow():
 def check_rangefinder():
     # TODO: check FPS!
     rng = False
-    try:
-        # FIXME: do I need to address this?
-        rospy.wait_for_message('rangefinder/range', Range, timeout=4)
-        rng = True
-    except rospy.ROSException:
-        failure('no rangefinder data from Raspberry')
-
     # loop through all rangefinders
     for i in range(number_of_rangefinders):
         try:
-            rospy.wait_for_message(f"mavros/distance_sensor_{i}/rangefinder", Range, timeout=4)
+            # FIXME: do I need to address this?
+            rospy.wait_for_message(f"rangefinder_{i}/range", Range, timeout=4)
             rng = True
         except rospy.ROSException:
-            failure('no rangefinder data from PX4')
+            failure('no rangefinder data from Raspberry')
+
+    try:
+        rospy.wait_for_message(f"mavros/distance_sensor/rangefinder", Range, timeout=4)
+        rng = True
+    except rospy.ROSException:
+        failure('no rangefinder data from PX4')
 
     if not rng:
         return
