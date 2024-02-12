@@ -50,7 +50,7 @@
             </horizontal>
           </scan>
           <range>
-            <min>0.03</min> <!-- Note: This is a hack, since the rangefinder is inside the drone collision box -->
+            <min>0.2</min> <!-- Note: This is a hack, since the rangefinder is inside the drone collision box -->
             <max>${range_max}</max>
             <resolution>${resolution}</resolution>
           </range>
