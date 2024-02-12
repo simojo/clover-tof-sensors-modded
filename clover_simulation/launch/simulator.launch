@@ -3,20 +3,21 @@
     <arg name="mav_id" default="0"/>
     <arg name="est" default="ekf2"/> <!-- PX4 estimator: lpe, ekf2 -->
     <arg name="vehicle" default="clover"/> <!-- PX4 vehicle configuration: clover, clover_vpe -->
-    <arg name="main_camera" default="true"/> <!-- Simulated vision position estimation camera (optical flow, ArUco) -->
+    <arg name="main_camera" default="false"/> <!-- Simulated vision position estimation camera (optical flow, ArUco) -->
     <arg name="maintain_camera_rate" default="false"/> <!-- Slow simulation down to maintain camera rate -->
     <arg name="rangefinder" default="true"/> <!-- Simulated downward-facing rangefinder, vl53l1x-like -->
     <arg name="led" default="false"/> <!-- Simulated LED strip, ws281x-like -->
     <arg name="gps" default="false"/> <!--Simulated GPS module -->
     <arg name="use_clover_physics" default="false"/> <!-- Use inertial parameters from CAD models -->
     <arg name="gui" default="true"/> <!-- Run Gazebo with GUI -->
+    <arg name="px4_sim_speed_factor" default="0"/> <!-- simulation speed -->
 
     <!-- Gazebo instance -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(eval type == 'gazebo')">
         <!-- Workaround for crashes in VMware -->
         <env name="SVGA_VGPU10" value="0"/>
         <arg name="gui" value="$(arg gui)"/>
-        <arg name="world_name" value="$(find clover_simulation)/resources/worlds/clover_aruco.world"/>
+        <arg name="world_name" value="$(find clover_simulation)/resources/worlds/clover.world"/>
         <arg name="verbose" value="true"/>
     </include>
 
@@ -24,6 +25,7 @@
     <node name="sitl_$(arg mav_id)" pkg="px4" type="px4" output="screen" required="true" args="$(find px4)/ROMFS/px4fmu_common -s etc/init.d-posix/rcS -i $(arg mav_id)" unless="$(eval type == 'none')">
         <env name="PX4_SIM_MODEL" value="$(arg vehicle)"/>
         <env name="PX4_ESTIMATOR" value="$(arg est)"/>
+        <env name="PX4_SIM_SPEED_FACTOR" value="$(arg px4_sim_speed_factor)"/>
     </node>
 
     <!-- Clover model -->
