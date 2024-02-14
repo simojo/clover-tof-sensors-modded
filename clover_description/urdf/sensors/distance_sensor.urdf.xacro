@@ -19,12 +19,14 @@
           <box size="0.0015 0.025 0.0175"/> <!-- dimension of Adafruit VL53L4CX -->
         </geometry>
       </visual>
+      <!-- remove collision parameters in order to allow for a more realistic minimum range
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <box size="0.0015 0.025 0.0175"/> <!-- dimension of Adafruit VL53L4CX -->
+          <box size="0.0015 0.025 0.0175"/>
         </geometry>
       </collision>
+      -->
       <inertial>
         <mass value="0.001"/>
         <origin xyz="0 0 0"/>
