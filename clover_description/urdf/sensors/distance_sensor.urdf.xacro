@@ -4,7 +4,7 @@
   <xacro:arg name="" default="true"/>
   <xacro:arg name="" default="true"/>
 
-  <xacro:macro name="distance_sensor" params="name:=lidar_VL53L4CX index parent x:=0 y:=0 z:=0 roll:=0 pitch:=0 yaw:=0 range_min range_max resolution:=0.01 rate:=10 fov:=0.3141593">
+  <xacro:macro name="distance_sensor" params="name:=lidar_VL53L4CX index parent x:=0 y:=0 z:=0 roll:=0 pitch:=0 yaw:=0 range_min range_min_gazebo:=0.2 range_max resolution:=0.01 rate:=10 fov:=0.3141593">
     <joint name="${name}_${index}_joint" type="fixed">
       <origin xyz="${x} ${y} ${z}"
               rpy="${roll} ${pitch} ${yaw}"/>
@@ -50,7 +50,7 @@
             </horizontal>
           </scan>
           <range>
-            <min>0.2</min> <!-- Note: This is a hack, since the rangefinder is inside the drone collision box -->
+            <min>${range_min_gazebo}</min> <!-- Note: This is a hack, since the rangefinder is inside the drone collision box -->
             <max>${range_max}</max>
             <resolution>${resolution}</resolution>
           </range>
