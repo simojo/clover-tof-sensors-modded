@@ -81,7 +81,7 @@ distance_sensor:
     subscriber: true
     id: 1
     orientation: PITCH_270
-     covariance: 1  # cm
+    covariance: 1  # cm
 
 # fake_gps
 fake_gps:
