@@ -25,7 +25,7 @@
         <arg name="fcu_ip" value="$(arg fcu_ip)"/>
         <arg name="fcu_sys_id" value="$(arg fcu_sys_id)"/>
         <arg name="gcs_bridge" value="$(arg gcs_bridge)"/>
-        <arg name="distance_sensor_remap" value = "rangefinder_8/range" />
+        <arg name="distance_sensor_remap" value = "rangefinder_9/range" />
     </include>
 
     <!-- web video server -->
