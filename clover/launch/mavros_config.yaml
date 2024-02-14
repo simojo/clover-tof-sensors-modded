@@ -70,19 +70,18 @@ setpoint_velocity:
 mission:
   pull_after_gcs: true  # update mission if gcs updates
 
-# NOTE: commenting out unless needed. For my purposes, we don't need to
 # tell the flight controller about range data.
-# distance_sensor:
-#   rangefinder:
-#       id: 0
-#       frame_id: "rangefinder"
-#       orientation: PITCH_270
-#       field_of_view: 0.5
-#   rangefinder_sub:
-#       subscriber: true
-#       id: 1
-#       orientation: PITCH_270
-#       covariance: 1  # cm
+distance_sensor:
+  rangefinder:
+    id: 0
+    frame_id: "rangefinder_9"
+    orientation: PITCH_270
+    field_of_view: 0.3141593
+  rangefinder_sub:
+    subscriber: true
+    id: 1
+    orientation: PITCH_270
+     covariance: 1  # cm
 
 # fake_gps
 fake_gps:
