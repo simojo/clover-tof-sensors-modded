@@ -137,7 +137,7 @@
     <link name="tof_sensor_array_link">
       <inertial>
         <mass value="0.092"/> <!-- [kg] -->
-        <origin xyz="0 0 ${-1 * 0.01525 / 2}" rpy="0 0 0"/>
+        <origin xyz="0 0 -0.015" rpy="0 0 0"/>
         <inertia
           ixx="8.57890084602841e-5"
           ixy="2.1174200194485434e-7"
