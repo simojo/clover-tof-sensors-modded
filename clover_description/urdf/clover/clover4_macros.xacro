@@ -142,22 +142,19 @@
           ixx="8.57890084602841e-5"
           ixy="2.1174200194485434e-7"
           ixz="4.585058826675158e-10"
-          iyx="2.1174200194485434e-7"
           iyy="8.53655353895177e-5"
           iyz="1.9573118871400868e-10"
-          izx="4.585058826675158e-10"
-          izy="1.9573118871400868e-10"
           izz="0.0001459305357956103"
         />
       </inertial>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 -0.015" rpy="0 0 0" />
         <geometry>
           <box size=".101567337 .101567337 .030500050" /> <!-- [m] [m] [m] -->
         </geometry>
       </collision>
       <visual>
-        <origin xyz="0 0 0.025" rpy="0 0 0"/>
+        <origin xyz="0 0 -0.015" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://clover_description/meshes/clover4/tof_sensor_drum.dae"
             scale="0.01 0.01 0.01"/> <!-- scale down because model is represented in mm -->
@@ -166,7 +163,7 @@
     </link>
 
     <joint name="tof_sensor_array_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.015" rpy="0 0 0"/>
       <parent link="base_link" />
       <child link="tof_sensor_array_link" />
     </joint>
