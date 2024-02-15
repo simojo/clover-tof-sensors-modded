@@ -162,7 +162,7 @@
     </link>
 
     <joint name="tof_sensor_array_joint" type="fixed">
-      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.075" rpy="0 0 0"/>
       <parent link="base_link" />
       <child link="tof_sensor_array_link" />
     </joint>
