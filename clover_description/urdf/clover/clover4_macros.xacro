@@ -133,11 +133,10 @@
     </joint>
 
     <!-- FIXME: how to set origin correctly? -->
-    <!-- FIXME: how to add rangefinder sensors? -->
     <link name="tof_sensor_array_link">
       <inertial>
         <mass value="0.092"/> <!-- [kg] -->
-        <origin xyz="0 0 -0.015" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <inertia
           ixx="8.57890084602841e-5"
           ixy="2.1174200194485434e-7"
@@ -148,22 +147,22 @@
         />
       </inertial>
       <collision>
-        <origin xyz="0 0 -0.015" rpy="0 0 0" />
+        <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <box size=".101567337 .101567337 .030500050" /> <!-- [m] [m] [m] -->
         </geometry>
       </collision>
       <visual>
-        <origin xyz="0 0 -0.015" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://clover_description/meshes/clover4/tof_sensor_drum.dae"
-            scale="0.01 0.01 0.01"/> <!-- scale down because model is represented in mm -->
+            scale="1 1 1"/> <!-- scale down because model is represented in mm -->
         </geometry>
       </visual>
     </link>
 
     <joint name="tof_sensor_array_joint" type="fixed">
-      <origin xyz="0 0 -0.015" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.05" rpy="0 0 0"/>
       <parent link="base_link" />
       <child link="tof_sensor_array_link" />
     </joint>
