@@ -161,8 +161,9 @@
       </visual>
     </link>
 
+    <xacro:property name="tof_sensor_drum_yaw_translate" value="${pi / 2 - pi / 8}" />
     <joint name="tof_sensor_array_joint" type="fixed">
-      <origin xyz="0 0 -0.075" rpy="0 0 0"/>
+      <origin xyz="0 0 -0.07" rpy="0 0 ${tof_sensor_drum_yaw_translate}"/>
       <parent link="base_link" />
       <child link="tof_sensor_array_link" />
     </joint>
