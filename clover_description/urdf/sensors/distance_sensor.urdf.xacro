@@ -40,6 +40,7 @@
     </gazebo>
 
     <gazebo reference="${name}_${index}_link">
+      <material>flatblack</material> <!-- custom material. can be found in clover_description/media/materials/scripts/flatblack.material -->
       <sensor type="ray" name="${name}_${index}">
         <pose>0 0 0 0 0 0</pose>
         <ray>
