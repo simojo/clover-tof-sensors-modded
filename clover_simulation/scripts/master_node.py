@@ -10,7 +10,7 @@ simulation_killswitch_flipped = False
 mutex = Lock()
 
 
-def simulation_killswitch_callback():
+def simulation_killswitch_callback(msg=None):
     """Change local variables to signify that this node should exit, thus causing all other nodes to exit."""
     global simulation_killswitch_flipped
     mutex.acquire()
