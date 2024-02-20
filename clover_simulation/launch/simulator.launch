@@ -3,7 +3,7 @@
     <arg name="mav_id" default="0"/>
     <arg name="est" default="ekf2"/> <!-- PX4 estimator: lpe, ekf2 -->
     <arg name="vehicle" default="clover"/> <!-- PX4 vehicle configuration: clover, clover_vpe -->
-    <arg name="main_camera" default="true"/> <!-- Simulated vision position estimation camera (optical flow, ArUco) --> <!-- FIXME: will the mission computer work if this is enabled? -->
+    <arg name="main_camera" default="true"/> <!-- Simulated vision position estimation camera (optical flow, ArUco) -->
     <arg name="maintain_camera_rate" default="false"/> <!-- Slow simulation down to maintain camera rate -->
     <arg name="rangefinder" default="true"/> <!-- Simulated group of rangefinders made to mimic the Adafruit VL53L4CX -->
     <arg name="led" default="false"/> <!-- Simulated LED strip, ws281x-like -->
@@ -20,6 +20,9 @@
         <arg name="world_name" value="$(find clover_simulation)/resources/worlds/clover.world"/>
         <arg name="verbose" value="true"/>
     </include>
+
+    <!-- master 'dummy' node used to stop execution -->
+    <node pkg="clover_simulation" type="master_node.py" required="true" />
 
     <!-- PX4 instance -->
     <node name="sitl_$(arg mav_id)" pkg="px4" type="px4" output="screen" required="true" args="$(find px4)/ROMFS/px4fmu_common -s etc/init.d-posix/rcS -i $(arg mav_id)" unless="$(eval type == 'none')">
