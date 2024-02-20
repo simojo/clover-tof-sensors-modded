@@ -22,7 +22,7 @@
     </include>
 
     <!-- master 'dummy' node used to stop execution -->
-    <node pkg="clover_simulation" type="master_node.py" required="true" />
+    <node name="master_node" pkg="clover_simulation" type="master_node.py" required="true" output="screen" />
 
     <!-- PX4 instance -->
     <node name="sitl_$(arg mav_id)" pkg="px4" type="px4" output="screen" required="true" args="$(find px4)/ROMFS/px4fmu_common -s etc/init.d-posix/rcS -i $(arg mav_id)" unless="$(eval type == 'none')">

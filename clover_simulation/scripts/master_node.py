@@ -17,18 +17,17 @@ def simulation_killswitch_callback(msg):
     mutex.release()
 
 
-if __name__ == "__main__":
-    rospy.init_node("master_node")
-    if rospy.is_shutdown():
-        rospy.ROSException("ROS master is not running!")
-    rospy.Service("simulation_killswitch", Empty, simulation_killswitch_callback)
-    rate = rospy.Rate(5)
-    while not rospy.is_shutdown():
-        mutex.acquire()
-        # if other node calls simulation_killswitch service,
-        # make this node stop execution
-        if simulation_killswitch_flipped:
-            mutex.release()
-            break
+rospy.init_node("master_node")
+if rospy.is_shutdown():
+    rospy.ROSException("ROS master is not running!")
+rospy.Service("simulation_killswitch", Empty, simulation_killswitch_callback)
+rate = rospy.Rate(5)
+while not rospy.is_shutdown():
+    mutex.acquire()
+    # if other node calls simulation_killswitch service,
+    # make this node stop execution
+    if simulation_killswitch_flipped:
         mutex.release()
-        rate.sleep()
+        break
+    mutex.release()
+    rate.sleep()
