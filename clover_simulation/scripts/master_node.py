@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import rospy
 
@@ -7,6 +7,7 @@ from threading import Lock
 
 
 simulation_killswitch_flipped = False
+mutex = Lock()
 
 
 def simulation_killswitch_callback(msg):
