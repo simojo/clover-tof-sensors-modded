@@ -2,7 +2,7 @@
 
 import rospy
 
-from std_srvs.srv import Empty
+from std_srvs.srv import Empty, EmptyResponse
 from threading import Lock
 
 
@@ -10,12 +10,13 @@ simulation_killswitch_flipped = False
 mutex = Lock()
 
 
-def simulation_killswitch_callback(msg):
+def simulation_killswitch_callback():
     """Change local variables to signify that this node should exit, thus causing all other nodes to exit."""
     global simulation_killswitch_flipped
     mutex.acquire()
     simulation_killswitch_flipped = True
     mutex.release()
+    return EmptyResponse()
 
 
 rospy.init_node("master_node")
