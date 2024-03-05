@@ -4,6 +4,7 @@
     <arg name="est" default="ekf2"/> <!-- PX4 estimator: lpe, ekf2 -->
     <arg name="vehicle" default="clover"/> <!-- PX4 vehicle configuration: clover, clover_vpe -->
     <arg name="main_camera" default="true"/> <!-- Simulated vision position estimation camera (optical flow, ArUco) -->
+    <arg name="gazebo_world_filepath" default="$(find clover_simulation)/resources/worlds/clover.world"/> <!-- default world model for gazebo to use -->
     <arg name="maintain_camera_rate" default="false"/> <!-- Slow simulation down to maintain camera rate -->
     <arg name="rangefinder" default="true"/> <!-- Simulated group of rangefinders made to mimic the Adafruit VL53L4CX -->
     <arg name="led" default="false"/> <!-- Simulated LED strip, ws281x-like -->
@@ -17,7 +18,7 @@
         <!-- Workaround for crashes in VMware -->
         <env name="SVGA_VGPU10" value="0"/>
         <arg name="gui" value="$(arg gui)"/>
-        <arg name="world_name" value="$(find clover_simulation)/resources/worlds/clover.world"/>
+        <arg name="world_name" value="$(arg gazebo_world_filepath)"/>
         <arg name="verbose" value="true"/>
     </include>
 
