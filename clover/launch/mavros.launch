@@ -42,6 +42,7 @@
         <rosparam command="load" file="$(find clover)/launch/mavros_config.yaml"/>
 
         <remap from="mavros/distance_sensor/rangefinder_sub" to="$(arg distance_sensor_remap)" if="$(eval bool(distance_sensor_remap))"/>
+        <remap from="rangefinder/range" to="$(arg distance_sensor_remap)" if="$(eval bool(distance_sensor_remap))"/>
 
         <rosparam param="plugin_whitelist">
             - altitude

@@ -460,7 +460,7 @@ def check_aruco():
 
 def is_on_the_floor():
     try:
-        dist = rospy.wait_for_message('rangefinder/range', Range, timeout=1)
+        dist = rospy.wait_for_message('rangefinder_9/range', Range, timeout=1)
         return dist.range < 0.3
     except rospy.ROSException:
         return False

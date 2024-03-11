@@ -1154,7 +1154,8 @@ int main(int argc, char **argv)
 		if (terrain_frame_mode == "altitude") {
 			altitude_sub = nh.subscribe(mavros + "/altitude", 1, &handleAltitude);
 		} else if (terrain_frame_mode == "range") {
-			string range_topic = nh_priv.param("range_topic", string("rangefinder/range"));
+			string range_topic = nh_priv.param("range_topic", string("rangefinder_9/range"));
+			std::cout << range_topic << std::endl;
 			altitude_sub = nh.subscribe(range_topic, 1, &handleRange);
 		} else {
 			ROS_FATAL("Unknown terrain_frame_mode: %s, valid values: altitude, range", terrain_frame_mode.c_str());
