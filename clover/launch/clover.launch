@@ -80,6 +80,8 @@
     <!-- tof_sensor_array_link -> rangefinder frame -->
     <node pkg="tf2_ros" type="static_transform_publisher" name="rangefinder_frame" args="0 0 0 0 1.5707963268 0 tof_sensor_array_link lidar_VL53L4CX_9_link" if="$(arg rangefinder_vl53l1x)"/>
 
+    <node pkg="tf2_ros" type="static_transform_publisher" name="rangefinder_9_frame" args="0 0 0 0 1.5707963268 0 base_link rangefinder_9" if="$(arg rangefinder_vl53l1x)"/>
+
     <!-- led strip -->
     <include file="$(find clover)/launch/led.launch" if="$(arg led)">
         <arg name="simulator" value="$(arg simulator)"/>

@@ -68,13 +68,34 @@
            So yeah, good luck improving this.
            - sfalexrog
       -->
-      <collision>
+      <collision name="base_link_inertia_collision">
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
           <box size="${body_width} ${body_width} ${body_height}" /> <!-- [m] [m] [m] -->
         </geometry>
       </collision>
     </link>
+
+    <gazebo reference="base_link">
+      <self_collide>0</self_collide>
+      <sensor name="base_link_contact" type="contact">
+        <always_on>true</always_on>
+        <contact>
+        <!-- See https://www.youtube.com/watch?v=KidqFt1mymE for why this
+             <collision> tag needs to be named differently than the actual
+             collision name it is referencing. The difference arises when `xacro`
+             is run to convert this file to sdf.
+             - simojo
+            -->
+          <collision>base_link_inertia_collision_collision</collision>
+        </contact>
+        <update_rate>5</update_rate>
+        <plugin name="base_link_bumper_plugin" filename="libgazebo_ros_bumper.so">
+          <bumperTopicName>base_link_contact</bumperTopicName>
+          <frameName>body</frameName>
+        </plugin>
+      </sensor>
+    </gazebo>
 
     <!-- This link is here for a single reason: to draw transparent parts (oh, and also to be the bane of my existence).
          I'm going to leave helpful comments for the poor soul who's going to attempt to improve this file.
@@ -174,6 +195,8 @@
     </gazebo>
 
     <gazebo reference="tof_sensor_array_link">
+      <kp>10000.0</kp>
+      <kd>10.0</kd>
       <material>flatblack</material> <!-- custom material. can be found in clover_description/media/materials/scripts/flatblack.material -->
     </gazebo>
 
