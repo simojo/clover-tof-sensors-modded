@@ -69,7 +69,7 @@
            - sfalexrog
       -->
       <collision name="base_link_inertia_collision">
-        <origin xyz="0 0 0" rpy="0 0 0" />
+        <origin xyz="0 0 0.05" rpy="0 0 0" />
         <geometry>
           <box size="${body_width} ${body_width} ${body_height}" /> <!-- [m] [m] [m] -->
         </geometry>
@@ -225,8 +225,8 @@
       </visual>
     </link>
     <gazebo reference="base_leg_1">
-      <!-- <kp>10000.0</kp> -->
-      <!-- <kd>10.0</kd> -->
+      <kp>10000.0</kp>
+      <kd>10.0</kd>
       <material>Polycarbonate</material> <!-- custom material. can be found in clover_description/media/materials/ -->
     </gazebo>
     <link name="base_leg_2">
@@ -256,8 +256,8 @@
       </visual>
     </link>
     <gazebo reference="base_leg_2">
-      <!-- <kp>10000.0</kp> -->
-      <!-- <kd>10.0</kd> -->
+      <kp>10000.0</kp>
+      <kd>10.0</kd>
       <material>Polycarbonate</material> <!-- custom material. can be found in clover_description/media/materials/ -->
     </gazebo>
     <link name="base_leg_3">
@@ -287,8 +287,8 @@
       </visual>
     </link>
     <gazebo reference="base_leg_3">
-      <!-- <kp>10000.0</kp> -->
-      <!-- <kd>10.0</kd> -->
+      <kp>10000.0</kp>
+      <kd>10.0</kd>
       <material>Polycarbonate</material> <!-- custom material. can be found in clover_description/media/materials/ -->
     </gazebo>
     <link name="base_leg_4">
@@ -319,8 +319,8 @@
       </visual>
     </link>
     <gazebo reference="base_leg_4">
-      <!-- <kp>10000.0</kp> -->
-      <!-- <kd>10.0</kd> -->
+      <kp>10000.0</kp>
+      <kd>10.0</kd>
       <material>Polycarbonate</material> <!-- custom material. can be found in clover_description/media/materials/ -->
     </gazebo>
 

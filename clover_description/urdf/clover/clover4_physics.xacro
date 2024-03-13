@@ -17,7 +17,7 @@
     <xacro:property name="mass" value="1.5" /> <!-- [kg] -->
   </xacro:unless>
   <xacro:property name="body_width" value="0.35" /> <!-- [m] -->
-  <xacro:property name="body_height" value="0.124" /> <!-- [m] -->
+  <xacro:property name="body_height" value="0.10" /> <!-- [m] -->
   <xacro:property name="mass_rotor" value="0.01" /> <!-- [kg] -->
   <xacro:property name="arm_length_front_x" value="0.083" /> <!-- [m] -->
   <xacro:property name="arm_length_back_x" value="0.083" /> <!-- [m] -->
