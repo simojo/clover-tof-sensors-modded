@@ -96,6 +96,15 @@
     <xacro:insert_block name="body_inertia" />
   </xacro:clover4_base_macro>
 
+  <!-- Included URDF Files -->
+  <xacro:include filename="clover4_base_leg.xacro" />
+
+  <!-- Instantiate leg models -->
+  <xacro:clover4_base_leg parent="base_link" index="0" />
+  <xacro:clover4_base_leg parent="base_link" index="1" />
+  <xacro:clover4_base_leg parent="base_link" index="2" />
+  <xacro:clover4_base_leg parent="base_link" index="3" />
+
   <!-- Instantiate rotors -->
   <xacro:vertical_clover_rotor
     robot_namespace="${namespace}"
