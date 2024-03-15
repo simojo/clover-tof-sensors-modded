@@ -12,6 +12,7 @@
     <arg name="use_clover_physics" default="false"/> <!-- Use inertial parameters from CAD models -->
     <arg name="gui" default="true"/> <!-- Run Gazebo with GUI -->
     <arg name="px4_sim_speed_factor" default="4"/> <!-- simulation speed -->
+    <arg name="use_master_node" default="false"/> <!-- use master node that allows manual shutdown -->
 
     <!-- Gazebo instance -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(eval type == 'gazebo')">
@@ -23,7 +24,7 @@
     </include>
 
     <!-- master 'dummy' node used to stop execution -->
-    <node name="master_node" pkg="clover_simulation" type="master_node.py" required="true" output="screen" />
+    <node name="master_node" pkg="clover_simulation" type="master_node.py" required="true" output="screen" if="$(arg use_master_node)" />
 
     <!-- PX4 instance -->
     <node name="sitl_$(arg mav_id)" pkg="px4" type="px4" output="screen" required="true" args="$(find px4)/ROMFS/px4fmu_common -s etc/init.d-posix/rcS -i $(arg mav_id)" unless="$(eval type == 'none')">
