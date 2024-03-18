@@ -13,6 +13,10 @@
     <arg name="gui" default="true"/> <!-- Run Gazebo with GUI -->
     <arg name="px4_sim_speed_factor" default="4"/> <!-- simulation speed -->
     <arg name="use_master_node" default="false"/> <!-- use master node that allows manual shutdown -->
+    <arg name="use_custom_clover_position" default="false"/>
+    <arg name="clover_x_position" default="0.0"/>
+    <arg name="clover_y_position" default="0.0"/>
+    <arg name="clover_z_position" default="0.0"/>
 
     <!-- Gazebo instance -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(eval type == 'gazebo')">
@@ -41,6 +45,10 @@
         <arg name="led" value="$(arg led)"/>
         <arg name="gps" value="$(arg gps)"/>
         <arg name="use_clover_physics" value="$(arg use_clover_physics)"/>
+        <arg name="use_custom_position" value="$(arg use_custom_clover_position)"/>
+        <arg name="x" value="$(arg clover_x_position)"/>
+        <arg name="y" value="$(arg clover_y_position)"/>
+        <arg name="z" value="$(arg clover_z_position)"/>
     </include>
 
     <node name="jmavsim" pkg="px4" required="true" type="jmavsim_run.sh" output="screen" if="$(eval type == 'jmavsim')">

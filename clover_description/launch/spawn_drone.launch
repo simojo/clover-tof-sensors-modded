@@ -10,9 +10,17 @@
     <arg name="gps" default="false"/>
     <!-- Use physics parameters from CAD programs -->
     <arg name="use_clover_physics" default="false"/>
+    <!-- ability to spawn drone at custom position -->
+    <arg name="use_custom_position" default="false" />
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.0"/>
 
     <arg name="cmd" default="$(find xacro)/xacro $(find clover_description)/urdf/clover/clover4.xacro main_camera:=$(arg main_camera) rangefinder:=$(arg rangefinder) led:=$(arg led) gps:=$(arg gps) maintain_camera_rate:=$(arg maintain_camera_rate) use_clover_physics:=$(arg use_clover_physics)"/>
     <param command="$(arg cmd)" name="drone_description"/>
     <!-- Note: -package_to_model replaces all mentions of "package://" with "model://" in urdf URIs -->
-    <node name="$(anon spawn)" output="screen" pkg="gazebo_ros" type="spawn_model" args="-urdf -param drone_description -model clover -z 0.3"/> 
+    <!-- use custom position args if use_custom_position is enabled -->
+    <node name="$(anon spawn)" output="screen" pkg="gazebo_ros" type="spawn_model" args="-urdf -param drone_description -model clover -x $(arg x) -y $(arg y) -z $(arg z)" if="$(arg use_custom_position)"/>
+    <!-- use default position if use_custom_position is disabled -->
+    <node name="$(anon spawn)" output="screen" pkg="gazebo_ros" type="spawn_model" args="-urdf -param drone_description -model clover -z 0.3" unless="$(arg use_custom_position)"/>
 </launch>
