@@ -6,7 +6,7 @@ r an X around the quadcopter's center.
 
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="clover4_base_leg"
-    params="parent:=base_link index">
+    params="parent:=base_link index transparent:=false">
 
     <xacro:property name="base_leg_x_dimension" value="0.045" />
     <xacro:property name="base_leg_y_dimension" value="0.007" />
@@ -42,12 +42,14 @@ r an X around the quadcopter's center.
           <box size="${base_leg_x_dimension} ${base_leg_y_dimension} ${base_leg_z_dimension}" /> <!-- [m] [m] [m] -->
         </geometry>
       </collision>
-      <visual>
-        <origin xyz="0 0 ${-1 * base_leg_z_dimension / 2}" rpy="0 0 0"/>
-        <geometry>
-          <box size="${base_leg_x_dimension} ${base_leg_y_dimension} ${base_leg_z_dimension}" /> <!-- [m] [m] [m] -->
-        </geometry>
-      </visual>
+      <xacro:unless value="${transparent}">
+        <visual>
+          <origin xyz="0 0 ${-1 * base_leg_z_dimension / 2}" rpy="0 0 0"/>
+          <geometry>
+            <box size="${base_leg_x_dimension} ${base_leg_y_dimension} ${base_leg_z_dimension}" /> <!-- [m] [m] [m] -->
+          </geometry>
+        </visual>
+      </xacro:unless>
     </link>
 
     <!--

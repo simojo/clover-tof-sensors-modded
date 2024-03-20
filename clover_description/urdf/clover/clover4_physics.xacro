@@ -100,10 +100,10 @@
   <xacro:include filename="clover4_base_leg.xacro" />
 
   <!-- Instantiate leg models -->
-  <xacro:clover4_base_leg parent="base_link" index="0" />
-  <xacro:clover4_base_leg parent="base_link" index="1" />
-  <xacro:clover4_base_leg parent="base_link" index="2" />
-  <xacro:clover4_base_leg parent="base_link" index="3" />
+  <xacro:clover4_base_leg parent="base_link" index="0" transparent="true" /> <!-- set to transparent to not interfere with camera -->
+  <xacro:clover4_base_leg parent="base_link" index="1" transparent="false" />
+  <xacro:clover4_base_leg parent="base_link" index="2" transparent="false" />
+  <xacro:clover4_base_leg parent="base_link" index="3" transparent="true" /> <!-- set to transparent to not interfere with camera -->
 
   <!-- Instantiate rotors -->
   <xacro:vertical_clover_rotor
